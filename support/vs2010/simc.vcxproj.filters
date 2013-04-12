@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="external">
+      <UniqueIdentifier>{7B5FE9A2-EB17-A343-8B2A-CAE24C6BDEBC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\simc">
+      <UniqueIdentifier>{ABA1983C-7695-9E4B-A86F-EED1C6BFFFF0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="external\simc\source">
+      <UniqueIdentifier>{14AE1411-08BE-7840-BE88-7B9E714DAAB3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\external\simc\include">
+      <Filter>external\simc</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\external\simc\source\sim_curtime.c">
+      <Filter>external\simc\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\source\sim_linkedlist.c">
+      <Filter>external\simc\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\source\sim_queue.c">
+      <Filter>external\simc\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\source\sim_threading.c">
+      <Filter>external\simc\source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\source\sim_xml.cpp">
+      <Filter>external\simc\source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

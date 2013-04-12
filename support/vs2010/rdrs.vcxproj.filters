@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="rdrs_core">
+      <UniqueIdentifier>{C20086D5-FC6F-CF43-B01E-35702CBCA51E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{F76BE2DA-DEEF-B045-8737-BC6398EA5D4C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\rdrs.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rdrs_internal.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\rdrs_lookup.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\source\rdrs_core\rdrs_antenna.c">
+      <Filter>rdrs_core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\rdrs_core\rdrs_lookup.c">
+      <Filter>rdrs_core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\rdrs_core\rdrs_physics.c">
+      <Filter>rdrs_core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\rdrs_core\rdrs_system.c">
+      <Filter>rdrs_core</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
