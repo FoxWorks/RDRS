@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="simc"
-	ProjectGUID="{7A046E98-E79F-7346-935C-DA07DB0429A9}"
+	ProjectGUID="{785D97DF-9D9C-4E4A-ADC1-84F7DD34978D}"
 	RootNamespace="simc"
 	Keyword="Win32Proj"
 	>
@@ -1262,6 +1262,32 @@
 				Name="simc"
 				Filter=""
 				>
+				<Filter
+					Name="external"
+					Filter=""
+					>
+					<Filter
+						Name="tinyxml"
+						Filter=""
+						>
+						<File
+							RelativePath="..\..\external\simc\external\tinyxml\tinystr.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\external\simc\external\tinyxml\tinyxml.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\external\simc\external\tinyxml\tinyxmlerror.cpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\external\simc\external\tinyxml\tinyxmlparser.cpp"
+							>
+						</File>
+					</Filter>
+				</Filter>
 				<File
 					RelativePath="..\..\external\simc\include"
 					>

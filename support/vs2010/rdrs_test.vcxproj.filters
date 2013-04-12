@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="rdrs_tests">
-      <UniqueIdentifier>{993F9D2A-5D33-BB4A-A05D-AAF422AD3953}</UniqueIdentifier>
+      <UniqueIdentifier>{E0303226-C183-EB4D-A779-895480D420D9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

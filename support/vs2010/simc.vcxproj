@@ -67,7 +67,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8471C023-719F-4340-9D44-3B8638EF1A94}</ProjectGuid>
+    <ProjectGuid>{71B23424-5CC5-604D-8771-8A13358ED06C}</ProjectGuid>
     <RootNamespace>simc</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
@@ -713,6 +713,14 @@
     <ClCompile Include="..\..\external\simc\source\sim_threading.c">
     </ClCompile>
     <ClCompile Include="..\..\external\simc\source\sim_xml.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\external\tinyxml\tinystr.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\external\tinyxml\tinyxml.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\external\tinyxml\tinyxmlerror.cpp">
+    </ClCompile>
+    <ClCompile Include="..\..\external\simc\external\tinyxml\tinyxmlparser.cpp">
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
