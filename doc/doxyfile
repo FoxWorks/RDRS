@@ -679,6 +679,7 @@ WARN_LOGFILE           =
 # with spaces.
 
 INPUT                  = ./../doc \
+						 ./../include \
                          ./../source/rdrs_core
 
 # This tag can be used to specify the character encoding of the source files 
