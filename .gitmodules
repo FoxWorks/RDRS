@@ -1,0 +1,3 @@
+[submodule "external/simc"]
+	path = external/simc
+	url = https://github.com/FoxWorks/SIMC.git
