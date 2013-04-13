@@ -1,54 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{C26C5B21-C87F-F04E-A656-DE6DAB77903E}</UniqueIdentifier>
+    </Filter>
     <Filter Include="external">
-      <UniqueIdentifier>{6D037FA7-1862-254D-8305-F1270B84618E}</UniqueIdentifier>
+      <UniqueIdentifier>{EBC7CC3E-7218-D24C-BEF0-2F2D49084DB2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\simc">
-      <UniqueIdentifier>{D4D63505-57D1-624B-834D-D3524FA4AFEC}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\simc\source">
-      <UniqueIdentifier>{6E71B42D-83AC-6746-B02C-7E51212524F0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\simc\external">
-      <UniqueIdentifier>{97269CED-8917-2643-9E71-F9C51FC1D0E5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\simc\external\tinyxml">
-      <UniqueIdentifier>{52BB5C82-673E-FD45-AA64-99A03C331480}</UniqueIdentifier>
+    <Filter Include="external\tinyxml">
+      <UniqueIdentifier>{B10B6F83-DB83-3A47-B2A7-F1EFF7550BF7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\external\simc\include">
-      <Filter>external\simc</Filter>
-    </None>
+    <None Include="..\..\external\simc\include" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\external\simc\source\sim_curtime.c">
-      <Filter>external\simc\source</Filter>
+      <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\source\sim_linkedlist.c">
-      <Filter>external\simc\source</Filter>
+      <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\source\sim_queue.c">
-      <Filter>external\simc\source</Filter>
+      <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\source\sim_threading.c">
-      <Filter>external\simc\source</Filter>
+      <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\source\sim_xml.cpp">
-      <Filter>external\simc\source</Filter>
+      <Filter>source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\external\tinyxml\tinystr.cpp">
-      <Filter>external\simc\external\tinyxml</Filter>
+      <Filter>external\tinyxml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\external\tinyxml\tinyxml.cpp">
-      <Filter>external\simc\external\tinyxml</Filter>
+      <Filter>external\tinyxml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\external\tinyxml\tinyxmlerror.cpp">
-      <Filter>external\simc\external\tinyxml</Filter>
+      <Filter>external\tinyxml</Filter>
     </ClCompile>
     <ClCompile Include="..\..\external\simc\external\tinyxml\tinyxmlparser.cpp">
-      <Filter>external\simc\external\tinyxml</Filter>
+      <Filter>external\tinyxml</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="rdrs_core">
-      <UniqueIdentifier>{4507DFB7-CA0C-3548-9850-172A837C7214}</UniqueIdentifier>
+      <UniqueIdentifier>{A80FB28C-A66F-3B47-A09E-66B1CE67ED17}</UniqueIdentifier>
     </Filter>
     <Filter Include="include">
-      <UniqueIdentifier>{4CDCB624-A834-D742-9C3C-06769EEE6743}</UniqueIdentifier>
+      <UniqueIdentifier>{DFE5711B-200D-4F45-AC67-066C8638B6B4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

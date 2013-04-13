@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="rdrs_test"
-	ProjectGUID="{4FF78565-AB87-DF46-9614-C5B3359CA49C}"
+	ProjectGUID="{9DFD9881-6E95-A14C-A73C-6AF89CDA9338}"
 	RootNamespace="rdrs_test"
 	Keyword="Win32Proj"
 	>

@@ -20,7 +20,7 @@ rdrs: simc
 	@echo "==== Building rdrs ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f rdrs.make
 
-rdrs_test: rdrs
+rdrs_test: rdrs simc
 	@echo "==== Building rdrs_test ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f rdrs_test.make
 

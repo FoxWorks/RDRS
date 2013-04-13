@@ -30,16 +30,16 @@ endif
 ifeq ($(config),debug32)
   OBJDIR     = obj/x32/Debug/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_testd32.exe
-  DEFINES   += -DDEBUG -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_testd32
+  DEFINES   += -DDEBUG
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrsd32.a
-  LDDEPS    += ../../bin/librdrsd32.a
+  LIBS      += ../../bin/librdrsd32.a ../../bin/libsimcd32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrsd32.a ../../bin/libsimcd32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -52,16 +52,16 @@ endif
 ifeq ($(config),release32)
   OBJDIR     = obj/x32/Release/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test32.exe
-  DEFINES   += -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_test32
+  DEFINES   += 
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrs32.a
-  LDDEPS    += ../../bin/librdrs32.a
+  LIBS      += ../../bin/librdrs32.a ../../bin/libsimc32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs32.a ../../bin/libsimc32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -74,16 +74,16 @@ endif
 ifeq ($(config),debugdynamic32)
   OBJDIR     = obj/x32/DebugDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_testd32.exe
-  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_testd32
+  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrsd32
-  LDDEPS    += ../../bin/librdrsd32.a
+  LIBS      += -lrdrsd32 ../../bin/libsimcd32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrsd32.so ../../bin/libsimcd32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -96,16 +96,16 @@ endif
 ifeq ($(config),releasedynamic32)
   OBJDIR     = obj/x32/ReleaseDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test32.exe
-  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_test32
+  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrs32
-  LDDEPS    += ../../bin/librdrs32.a
+  LIBS      += -lrdrs32 ../../bin/libsimc32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs32.so ../../bin/libsimc32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -118,16 +118,16 @@ endif
 ifeq ($(config),debugsinglethread32)
   OBJDIR     = obj/x32/DebugSingleThread/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_std32.exe
-  DEFINES   += -DDEBUG -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_test_std32
+  DEFINES   += -DDEBUG -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrs_std32.a
-  LDDEPS    += ../../bin/librdrs_std32.a
+  LIBS      += ../../bin/librdrs_std32.a ../../bin/libsimc_std32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_std32.a ../../bin/libsimc_std32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -140,16 +140,16 @@ endif
 ifeq ($(config),releasesinglethread32)
   OBJDIR     = obj/x32/ReleaseSingleThread/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_st32.exe
-  DEFINES   += -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_test_st32
+  DEFINES   += -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrs_st32.a
-  LDDEPS    += ../../bin/librdrs_st32.a
+  LIBS      += ../../bin/librdrs_st32.a ../../bin/libsimc_st32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_st32.a ../../bin/libsimc_st32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -162,16 +162,16 @@ endif
 ifeq ($(config),debugsinglethreaddynamic32)
   OBJDIR     = obj/x32/DebugSingleThreadDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_std32.exe
-  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_test_std32
+  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrs_std32
-  LDDEPS    += ../../bin/librdrs_std32.a
+  LIBS      += -lrdrs_std32 ../../bin/libsimc_std32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_std32.so ../../bin/libsimc_std32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -184,16 +184,16 @@ endif
 ifeq ($(config),releasesinglethreaddynamic32)
   OBJDIR     = obj/x32/ReleaseSingleThreadDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_st32.exe
-  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32
+  TARGET     = $(TARGETDIR)/rdrs_test_st32
+  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m32
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m32 -L/usr/lib32
+  LDFLAGS   += -L../../bin -m32 -L/usr/lib32 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrs_st32
-  LDDEPS    += ../../bin/librdrs_st32.a
+  LIBS      += -lrdrs_st32 ../../bin/libsimc_st32.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_st32.so ../../bin/libsimc_st32.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -206,16 +206,16 @@ endif
 ifeq ($(config),debug64)
   OBJDIR     = obj/x64/Debug/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_testd.exe
-  DEFINES   += -DDEBUG -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_testd
+  DEFINES   += -DDEBUG
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrsd.a
-  LDDEPS    += ../../bin/librdrsd.a
+  LIBS      += ../../bin/librdrsd.a ../../bin/libsimcd.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrsd.a ../../bin/libsimcd.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -228,16 +228,16 @@ endif
 ifeq ($(config),release64)
   OBJDIR     = obj/x64/Release/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test.exe
-  DEFINES   += -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_test
+  DEFINES   += 
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrs.a
-  LDDEPS    += ../../bin/librdrs.a
+  LIBS      += ../../bin/librdrs.a ../../bin/libsimc.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs.a ../../bin/libsimc.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -250,16 +250,16 @@ endif
 ifeq ($(config),debugdynamic64)
   OBJDIR     = obj/x64/DebugDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_testd.exe
-  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_testd
+  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrsd
-  LDDEPS    += ../../bin/librdrsd.a
+  LIBS      += -lrdrsd ../../bin/libsimcd.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrsd.so ../../bin/libsimcd.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -272,16 +272,16 @@ endif
 ifeq ($(config),releasedynamic64)
   OBJDIR     = obj/x64/ReleaseDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test.exe
-  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_test
+  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrs
-  LDDEPS    += ../../bin/librdrs.a
+  LIBS      += -lrdrs ../../bin/libsimc.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs.so ../../bin/libsimc.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -294,16 +294,16 @@ endif
 ifeq ($(config),debugsinglethread64)
   OBJDIR     = obj/x64/DebugSingleThread/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_std.exe
-  DEFINES   += -DDEBUG -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_test_std
+  DEFINES   += -DDEBUG -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrs_std.a
-  LDDEPS    += ../../bin/librdrs_std.a
+  LIBS      += ../../bin/librdrs_std.a ../../bin/libsimc_std.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_std.a ../../bin/libsimc_std.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -316,16 +316,16 @@ endif
 ifeq ($(config),releasesinglethread64)
   OBJDIR     = obj/x64/ReleaseSingleThread/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_st.exe
-  DEFINES   += -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_test_st
+  DEFINES   += -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += ../../bin/librdrs_st.a
-  LDDEPS    += ../../bin/librdrs_st.a
+  LIBS      += ../../bin/librdrs_st.a ../../bin/libsimc_st.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_st.a ../../bin/libsimc_st.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -338,16 +338,16 @@ endif
 ifeq ($(config),debugsinglethreaddynamic64)
   OBJDIR     = obj/x64/DebugSingleThreadDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_std.exe
-  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_test_std
+  DEFINES   += -DDEBUG -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrs_std
-  LDDEPS    += ../../bin/librdrs_std.a
+  LIBS      += -lrdrs_std ../../bin/libsimc_std.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_std.so ../../bin/libsimc_std.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
@@ -360,16 +360,16 @@ endif
 ifeq ($(config),releasesinglethreaddynamic64)
   OBJDIR     = obj/x64/ReleaseSingleThreadDynamic/rdrs_test
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/rdrs_test_st.exe
-  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED -D_CRT_SECURE_NO_WARNINGS -DWIN32 -DWIN64
+  TARGET     = $(TARGETDIR)/rdrs_test_st
+  DEFINES   += -DEVDS_DYNAMIC -DIVSS_DYNAMIC -DRDRS_DYNAMIC -DSIMC_DYNAMIC -DEVDS_SINGLETHREADED -DIVSS_SINGLETHREADED -DRDRS_SINGLETHREADED -DSIMC_SINGLETHREADED
   INCLUDES  += -I../../include -I../../external/simc/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -g -m64
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../bin -m64 -L/usr/lib64
+  LDFLAGS   += -L../../bin -m64 -L/usr/lib64 -lstdc++
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LIBS      += -lrdrs_st
-  LDDEPS    += ../../bin/librdrs_st.a
+  LIBS      += -lrdrs_st ../../bin/libsimc_st.a -lm -lpthread -ltinyxml
+  LDDEPS    += ../../bin/librdrs_st.so ../../bin/libsimc_st.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(RESOURCES) $(ARCH) $(LIBS) $(LDFLAGS)
   define PREBUILDCMDS
   endef
