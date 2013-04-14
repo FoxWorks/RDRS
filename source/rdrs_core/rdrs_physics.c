@@ -112,13 +112,20 @@ double RDRS_Physics_GetBER(int modulation, double SNR) {
 double RDRS_Physics_GetDirectionalGain(RDRS_ANTENNA* antenna, double theta, double phi) {
 	double kL2 = antenna->channel.k * antenna->size / 2.0;
 
-	return ((4*RDRS_PI)/(8*RDRS_PI*RDRS_PI)) * 
-		pow(cos(kL2 * cos(theta)) - cos(kL2),2) / (sin(theta)*sin(theta) + RDRS_EPS);
+	//return ((4*RDRS_PI)/(8*RDRS_PI*RDRS_PI)) * 
+		//pow(cos(kL2 * cos(theta)) - cos(kL2),2) / (sin(theta)*sin(theta) + RDRS_EPS);
 	/*{
 		double h = 0.5;
 		return (antenna->size*antenna->size / (2*antenna->channel.lambda*antenna->channel.lambda)) *
 			pow(1-sin(theta)*sin(theta)*sin(phi)*sin(phi),2)*
 			pow(sin(antenna->channel.k*h*cos(theta)),2);
+	}*/
+	/*{
+		double r = antenna->size*antenna->size;
+		double k = antenna->channel.k;
+		double lambda = antenna->channel.lambda;
+		double krsin = k*r*sin(theta);
+		return (2*RDRS_PI*RDRS_PI*r*r / (lambda*lambda))*  pow((cos(theta)/krsin)*j1(krsin),2);
 	}*/
 	return 1.0;
 }
