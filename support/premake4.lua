@@ -28,6 +28,7 @@ if _ACTION == "rdrsdoc" then return end
 -- Realtime Digital Radio Simulator
 --------------------------------------------------------------------------------
 project "rdrs"
+   uuid "1418E57D-CB20-5542-8D85-B90995D5B8BE"
    library()
    language "C"
    includedirs { "../include",
@@ -42,6 +43,7 @@ project "rdrs"
 -- Tutorials
 --------------------------------------------------------------------------------
 project "rdrs_test"
+   uuid "9DFD9881-6E95-A14C-A73C-6AF89CDA9338"
    kind "ConsoleApp"
    language "C"
    includedirs { "../include",
