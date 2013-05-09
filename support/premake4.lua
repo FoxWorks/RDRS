@@ -42,14 +42,16 @@ project "rdrs"
 --------------------------------------------------------------------------------
 -- Tutorials
 --------------------------------------------------------------------------------
-project "rdrs_test"
-   uuid "9DFD9881-6E95-A14C-A73C-6AF89CDA9338"
-   kind "ConsoleApp"
-   language "C"
-   includedirs { "../include",
-                 "../external/simc/include" }
-   files { "../source/rdrs_tests/rdrs_test.c"  }
-   links { "rdrs" }
-   
-   configuration { "not windows" }
-      links { "simc", "tinyxml" }
+if RDRS_STANDALONE ~= false then
+   project "rdrs_test"
+      uuid "9DFD9881-6E95-A14C-A73C-6AF89CDA9338"
+      kind "ConsoleApp"
+      language "C"
+      includedirs { "../include",
+                    "../external/simc/include" }
+      files { "../source/rdrs_tests/rdrs_test.c"  }
+      links { "rdrs" }
+      
+      configuration { "not windows" }
+         links { "simc", "tinyxml" }
+end
