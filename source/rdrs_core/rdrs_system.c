@@ -67,12 +67,12 @@ int RDRS_System_Destroy(RDRS_SYSTEM* system) {
 	if (!system) return RDRS_ERROR_BAD_PARAMETER;
 
 	//Destroy resources
-	entry = SIMC_List_GetFirst(system->antennas);
+	/*entry = SIMC_List_GetFirst(system->antennas);
 	while (entry) {
 		RDRS_Antenna_Destroy((RDRS_ANTENNA*)SIMC_List_GetData(system->antennas,entry));
 		entry = SIMC_List_GetFirst(system->antennas);
 	}
-	SIMC_List_Destroy(system->antennas);
+	SIMC_List_Destroy(system->antennas);*/
 
 	//Deinitialize system
 	SIMC_Thread_Deinitialize();
